@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SallaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return ['Laravel' => app()->version()];
-});
-
+// Route::get('/', function () {
+//     return ['Laravel' => app()->version()];
+// });
+Route::get('/auth',[SallaController::class,'auth'])->name('auth');
+Route::get('/auth/callback',[SallaController::class,'callback'])->name('callback');
