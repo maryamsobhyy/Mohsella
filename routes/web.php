@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SallaController;
+use App\Http\Controllers\SocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,11 @@ use App\Http\Controllers\SallaController;
 |
 */
 
-// Route::get('/', function () {
-//     return ['Laravel' => app()->version()];
-// });
+Route::get('/', function () {
+    return ['Laravel' => app()->version()];
+});
 Route::get('/auth',[SallaController::class,'auth'])->name('auth');
 Route::get('/auth/callback',[SallaController::class,'callback'])->name('callback');
+// Google api.php
+Route::get('/auth/google', [SocialiteController::class, 'redirectToGoogle']);
+Route::get('/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
